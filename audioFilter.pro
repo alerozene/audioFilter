@@ -1,6 +1,7 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
+
 
 CONFIG += c++11
 
@@ -17,13 +18,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    audiofilter.cpp
+    audiofilter.cpp \
+    plotter.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
-    audiofilter.h
+    audiofilter.h \
+    plotter.h \
+    qcustomplot.h
 
 FORMS += \
-    audiofilter.ui
+    audiofilter.ui \
+    plotter.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
