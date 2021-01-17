@@ -2,6 +2,8 @@
 #define PLOTTER_H
 
 #include <QWidget>
+#include "qcustomplot.h"
+
 
 namespace Ui {
 class Plotter;
@@ -15,8 +17,13 @@ public:
     explicit Plotter(QWidget *parent = nullptr);
     ~Plotter();
 
+    void setupPlot();
+
+
+
 private:
     Ui::Plotter *ui;
+
 };
 
 #endif // PLOTTER_H
