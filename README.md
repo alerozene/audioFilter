@@ -1,7 +1,7 @@
 # Filter Audio signals
 
 ## Program structure
-The best way for me to learn is by trying. When trying is too hard, the best thing to do is to follow a tutorial. With this set of instructions I wish to show the process I went through to build this app with little qt background. 
+The best way for me to learn is by trying. When trying is too hard, the best thing to do is to follow a tutorial. With this set of instructions I wish to show the process I went through to build this app with little qt background. Following the philosophy of incremental programming, I give the steps that I followed in building this piece of software
 
 ## Resources and where I stand now 
 
@@ -32,3 +32,9 @@ https://www.qcustomplot.com/index.php/tutorials/settingup
 4. Another point were I got stuck is, after changing the name of the proted customPlot widget, was: Plotter has no member...
 This is because after re-naming the widget, the little red button on the picture needs to be clicked
 ![err2](/images/error_2.jpg)
+
+### Qcustomplot
+To learn how to use this library, just follow the [setting up](https://www.qcustomplot.com/index.php/tutorials/settingup) tutorial. For creating a plot: [this](https://www.qcustomplot.com/index.php/tutorials/basicplotting)
+
+`rawdata.h and .cpp`
+This class sets the data to be filtered and plotted. The objects need to be of type QVector [line 5102 of qcustomplot.h]
