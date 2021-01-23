@@ -3,6 +3,9 @@
 ## Program structure
 The best way for me to learn is by trying. When trying is too hard, the best thing to do is to follow a tutorial. With this set of instructions I wish to show the process I went through to build this app with little qt background. Following the philosophy of incremental programming, I give the steps that I followed in building this piece of software
 
+## How to use
+
+
 ## Resources and where I stand now 
 
 In process of making the Qwidget application following partly the [first tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window creation and now stuck at browsing the file following [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). The stuck part was because I wasnt't rebuilding...
@@ -44,4 +47,5 @@ This class sets the data to be filtered and plotted. The objects need to be of t
 
 
 Some errors 
-`No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop` This error was caused by an automatic update in the path to the qcustomplot file 
+`No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop` This error was caused by an automatic update in the path to the qcustomplot file. Fixed by renaming as seen in the image below
+[!norulemaketarget](/images/err_no_rule_to_make_target.jpg)
