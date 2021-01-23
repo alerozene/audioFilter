@@ -38,3 +38,10 @@ To learn how to use this library, just follow the [setting up](https://www.qcust
 
 `rawdata.h and .cpp`
 This class sets the data to be filtered and plotted. The objects need to be of type QVector [line 5102 of qcustomplot.h]
+
+
+
+
+
+Some errors 
+`No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop` This error was caused by an automatic update in the path to the qcustomplot file 

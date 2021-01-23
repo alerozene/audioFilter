@@ -1,6 +1,6 @@
 #ifndef PLOTTER_H
 #define PLOTTER_H
-
+#include "rawdata.h"
 #include <QWidget>
 #include "qcustomplot.h"
 

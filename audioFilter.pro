@@ -20,12 +20,14 @@ SOURCES += \
     main.cpp \
     audiofilter.cpp \
     plotter.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    rawdata.cpp
 
 HEADERS += \
     audiofilter.h \
     plotter.h \
-    qcustomplot.h
+    qcustomplot.h \
+    rawdata.h
 
 FORMS += \
     audiofilter.ui \
