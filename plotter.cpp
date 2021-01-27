@@ -4,9 +4,10 @@
 Plotter::Plotter(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Plotter)
+
 {
     ui->setupUi(this);
-    setupPlot();
+
 
 
 }
@@ -18,16 +19,26 @@ Plotter::~Plotter()
 
 void Plotter::setupPlot()
 {
-    Rawdata rwrw;
+
+    WavFile song(pathname);
+
 
     // create graph and assign data to it:
     ui->customPlot->addGraph();
-    ui->customPlot->graph(0)->setData(rwrw.x,rwrw.y);
+
+    ui->customPlot->graph(0)->setData(song.t_x,song.pcm_y);
+
     // give the axes some labels:
-    ui->customPlot->xAxis->setLabel("x");
-    ui->customPlot->yAxis->setLabel("y");
+    ui->customPlot->xAxis->setLabel("time [s]");
+    ui->customPlot->yAxis->setLabel("PCM");
     // set axes ranges, so we see all data:
-    ui->customPlot->xAxis->setRange(-1, 1);
-    ui->customPlot->yAxis->setRange(0, 1);
+    ui->customPlot->xAxis->setRange(0, 70000);
+    ui->customPlot->yAxis->setRange(0, 10000);
     ui->customPlot->replot();
+}
+
+void Plotter::setPathString(QString pathread)
+{
+
+    pathname = pathread;
 }

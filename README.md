@@ -49,3 +49,35 @@ This class sets the data to be filtered and plotted. The objects need to be of t
 Some errors 
 `No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop` This error was caused by an automatic update in the path to the qcustomplot file. Fixed by renaming as seen in the image below
 [!norulemaketarget](/images/err_no_rule_to_make_target.jpg)
+
+Sometimes it is also necessary to do: clean all runqmake (re)build all
+
+`SIGSEGV segmentation fault (signal received qt dialog)`: I get this at fopen(fname) in wavfile.cpp the reason being that I convert the QString as follows: 
+
+QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                    "C:/",
+                                                    tr("Audio (*.wav)"));
+    // Write the text back to the widget
+    ui->plainTextEdit->setPlainText(fileName);
+
+    // Prompt plot window: approach 1 heap
+    Plotter *graph = new Plotter();
+    graph->setPathString(fileName);
+    ....
+
+plotter.cpp
+
+void Plotter::setPathString(QString pathread)
+{
+    pathname = pathread.toStdString().c_str();
+}
+
+...
+And then when I want to access it from the fname there is that error
+
+
+
+
+
+## To do:
+- [] Make template with raw data so that not only int16 is accepted

@@ -21,13 +21,13 @@ SOURCES += \
     audiofilter.cpp \
     plotter.cpp \
     qcustomplot.cpp \
-    rawdata.cpp
+    wavfile.cpp
 
 HEADERS += \
     audiofilter.h \
     plotter.h \
     qcustomplot.h \
-    rawdata.h
+    wavfile.h
 
 FORMS += \
     audiofilter.ui \
