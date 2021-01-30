@@ -34,6 +34,7 @@ void Plotter::setupPlot()
     // set axes ranges, so we see all data:
     ui->customPlot->xAxis->setRange(0, 70000);
     ui->customPlot->yAxis->setRange(0, 10000);
+    ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
     ui->customPlot->replot();
 }
 
