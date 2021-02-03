@@ -1,5 +1,5 @@
 # Object file
 *.o
 
-# Ada Library Information
-*.ali
+# Qt autosave files
+*.autosave
