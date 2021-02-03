@@ -1,5 +1,6 @@
 # Object file
 *.o
 
-# Qt autosave files
+# Qt autosave files and pro.user
 *.autosave
+*.pro.user
