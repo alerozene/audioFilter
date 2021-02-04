@@ -1,7 +1,7 @@
 #ifndef AUDIOFILTER_H
 #define AUDIOFILTER_H
 
-#include "plotter.h"
+
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE

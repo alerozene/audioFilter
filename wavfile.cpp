@@ -11,16 +11,20 @@
  **/
 
 #include "wavfile.h"
+#include "vecutils.h"
+#include "globals.h"
+#include<math.h>
 
 WavFile::WavFile(): x(101),y(101)
 {
-    setValues(x,y);
+    setDummy(x,y);
 }
 
 WavFile::WavFile(QString f ): fname(f)
 {
     readWav();
     setAudio();
+    displayDownsample();
 }
 
 void WavFile::readWav(){
@@ -31,7 +35,7 @@ void WavFile::readWav(){
     pFile = fopen (charfname,"rb");
 
 
-    if (pFile==NULL){fprintf(stderr, "Null file");}
+    if (pFile==nullptr){fprintf(stderr, "Null file");}
     else
     {
         // obtain file size:
@@ -60,25 +64,16 @@ void WavFile::readWav(){
         fread(&subCh2Size,sizeof(uint32_t),1,pFile);
 
         //Set data
-        data = (uint16_t*) malloc(sizeof(uint16_t)*(lSize-44));
+        //data = (uint16_t*) malloc(sizeof(uint16_t)*(lSize-44));
+        data = new uint16_t [sizeof(uint16_t)*(lSize-44)];
         fread(data ,sizeof(uint16_t),(lSize-44),pFile);
         fclose(pFile);
-        uint16_t data1;
-        for (int i = 4995; i < 5000; i++)
-                {
-                    data1 = data[i];
-                }
-
-
-
-
-
 
 
     }
 }
 
-void WavFile::setValues(QVector<double> &x, QVector<double> &y)
+void WavFile::setDummy(QVector<double> &x, QVector<double> &y)
 {
 
     for (int i=0; i<101; ++i)
@@ -95,24 +90,41 @@ void WavFile::setAudio()
     {
         pcm_y.reserve((lSize-44)/2);
         pcm_y.append(5);
-        int data1;
         for(int ii=0;ii<lSize-44;ii=ii+2)
         {
             pcm_y.append((double)data[ii]);
-            if(ii==4900){
-                data1 = data[ii];
-            }
         }
     }
+    else {
+        // case with one channel
+    }
 
-
+    // free the space of the raw data
+    delete[] data;
 
 
     t_x.resize(pcm_y.size());
-    t_x[0] = 0;
+    t_x[0] = 0.0;
     for(int j=1;j<t_x.size();j++)
     {
-        t_x[j] = j;//sampleRate;
+        t_x[j] = double(j)/double(sampleRate);//sampleRate;
     }
 }
 
+
+void WavFile::displayDownsample()
+{
+    //downsample to 1,000. A few last samples will always be left out
+    int nwsrate = pcm_y.size()/DISPOINTS;
+    pcm_plty.resize(pcm_y.size()/nwsrate);
+    t_pltx.resize(pcm_plty.size());
+
+    for(int i=0;i<pcm_y.size();i=i+nwsrate)
+    {
+        t_pltx.append(t_x[i]);
+        //pcm_plty.append(log10(pcm_y[i]));
+        pcm_plty.append(log(pcm_y[i]));
+    }
+
+
+}

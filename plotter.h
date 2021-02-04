@@ -1,6 +1,6 @@
 #ifndef PLOTTER_H
 #define PLOTTER_H
-#include "wavfile.h"
+
 #include <QWidget>
 #include "qcustomplot.h"
 

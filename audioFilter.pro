@@ -17,16 +17,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    gaussnoise.cpp \
     main.cpp \
     audiofilter.cpp \
     plotter.cpp \
     qcustomplot.cpp \
+    vecutils.cpp \
     wavfile.cpp
 
 HEADERS += \
     audiofilter.h \
+    gaussnoise.h \
+    globals.h \
     plotter.h \
     qcustomplot.h \
+    vecutils.h \
     wavfile.h
 
 FORMS += \

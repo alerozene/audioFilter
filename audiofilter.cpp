@@ -1,5 +1,6 @@
 #include "audiofilter.h"
 #include "ui_audiofilter.h"
+#include "plotter.h"
 #include <QFileDialog>
 
 

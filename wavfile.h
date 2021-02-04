@@ -1,5 +1,5 @@
-#ifndef RAWDATA_H
-#define RAWDATA_H
+#ifndef WAVFILE_H
+#define WAVFILE_H
 
 #include <iostream>
 #include <stdio.h>  // fopen and fseek
@@ -16,7 +16,7 @@ class WavFile
     QString fname;
 
     FILE * pFile;
-    uint32_t lSize;
+    int32_t lSize;
     uint8_t chunkID[4];
     uint32_t chunkSize;
     uint8_t fmt[4], subCh1ID[4];
@@ -34,10 +34,12 @@ public:
 
     QVector<double> t_x,pcm_y;
     QVector<double> x,y;
+    QVector<double> t_pltx, pcm_plty;
 
     void readWav();
-    void setValues(QVector<double> &, QVector<double> &);
+    void setDummy(QVector<double> &, QVector<double> &);
     void setAudio();
+    void displayDownsample();
 };
 
-#endif // RAWDATA_H
+#endif // WAVFILE_H

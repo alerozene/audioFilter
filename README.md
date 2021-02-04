@@ -8,12 +8,18 @@ The best way for me to learn is by trying. When trying is too hard, the best thi
 
 ## Resources and where I stand now 
 
-In process of making the Qwidget application following partly the [first tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window creation and now stuck at browsing the file following [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). The stuck part was because I wasnt't rebuilding...
+
+### `audiofilter.cpp`
+
+I got started with the Qwidget application partly following the [first Qt tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window creation. The file browsing was assembled following [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). 
+
 
 Then I added a plain text widget in the ui and set it to display the path
 
 Next, create a new ui.h for the plot and access it from the button clicked function
+a
 
+### `plotter.cpp`
 
 ## plot form
 Add the form by typing...
@@ -75,9 +81,15 @@ void Plotter::setPathString(QString pathread)
 ...
 And then when I want to access it from the fname there is that error
 
+According to:
 
+https://stackoverflow.com/questions/2523765/qstring-to-char-conversion
+
+
+## `audiofilter.cpp`
 
 
 
 ## To do:
-- [] Make template with raw data so that not only int16 is accepted
+- [ ] Make template with raw data so that not only int16 is accepted
+- [] Issue: wavfile.cpp t_x is stored as an int, therefore all the thousands of samples are mapped to seconds
