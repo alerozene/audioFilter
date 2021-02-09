@@ -3,4 +3,4 @@
 
 # Qt autosave files and pro.user
 *.autosave
-*.pro.user
+*.user
