@@ -92,4 +92,7 @@ https://stackoverflow.com/questions/2523765/qstring-to-char-conversion
 
 ## To do:
 - [ ] Make template with raw data so that not only int16 is accepted
-- [] Issue: wavfile.cpp t_x is stored as an int, therefore all the thousands of samples are mapped to seconds
+
+
+http://freeverb3vst.osdn.jp/tips/iir_filter.shtml
+
