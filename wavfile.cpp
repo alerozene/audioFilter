@@ -2,18 +2,22 @@
  * ------------
  * References:
  *  - fread function https://cplusplus.com/reference/cstdio/fread/
- *  - WAV1 https://stackoverflow.com/questions/13660777/c-reading-the-data-part-of-a-wav-file
- *  - Source of the info http://soundfile.sapp.org/doc/WaveFormat/
- *  - An even better one https://www.lightlink.com/tjweber/StripWav/WAVE.html
- *  - A dude with code https://rogerchansdigitalworld.blogspot.com/2010/05/how-to-read-wav-format-file-in-c.html
+ *  - WAV, how to read a wave file: https://stackoverflow.com/questions/13660777/c-reading-the-data-part-of-a-wav-file
+ *  - More info for function readWAv: http://soundfile.sapp.org/doc/WaveFormat/
+ *  - An even better source: https://www.lightlink.com/tjweber/StripWav/WAVE.html
+ *  - And a dude with (bit useless) code: https://rogerchansdigitalworld.blogspot.com/2010/05/how-to-read-wav-format-file-in-c.html
  *
  *
  **/
 
+#include "globals.h"
 #include "wavfile.h"
 #include "vecutils.h"
-#include "globals.h"
+
 #include<math.h>
+
+// from globals.h
+double fs;
 
 WavFile::WavFile(): x(101),y(101)
 {
@@ -29,8 +33,9 @@ WavFile::WavFile(QString f ): fname(f)
 
 void WavFile::readWav(){
 
-    // open file as read only "rb"
+    // use fname to open file as read only "rb"
     std::string strfname = fname.toStdString();
+    // recast the qstring as a char
     const char *charfname = strfname.c_str();
     pFile = fopen (charfname,"rb");
 
@@ -65,23 +70,14 @@ void WavFile::readWav(){
 
         //Set data
         //data = (uint16_t*) malloc(sizeof(uint16_t)*(lSize-44));
-        data = new uint16_t [sizeof(uint16_t)*(lSize-44)];
-        fread(data ,sizeof(uint16_t),(lSize-44),pFile);
+        data = new int16_t [sizeof(int16_t)*(lSize-44)];
+        fread(data ,sizeof(int16_t),(lSize-44),pFile);
         fclose(pFile);
 
-
+        // set the global sampling frequency
+        fs = static_cast<double>(sampleRate);
+        //fs = double(sampleRate);
     }
-}
-
-void WavFile::setDummy(QVector<double> &x, QVector<double> &y)
-{
-
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-
 }
 
 void WavFile::setAudio()
@@ -92,11 +88,16 @@ void WavFile::setAudio()
         pcm_y.append(5);
         for(int ii=0;ii<lSize-44;ii=ii+2)
         {
-            pcm_y.append((double)data[ii]);
+            //qcustomplot requires type double
+            pcm_y.append(static_cast<double>(data[ii]));
         }
     }
     else {
-        // case with one channel
+        pcm_y.reserve(lSize-44);
+        for(int i=0;i<lSize-44;i++)
+        {
+            pcm_y.append( static_cast<double>(data[i]));
+        }
     }
 
     // free the space of the raw data
@@ -107,10 +108,9 @@ void WavFile::setAudio()
     t_x[0] = 0.0;
     for(int j=1;j<t_x.size();j++)
     {
-        t_x[j] = double(j)/double(sampleRate);//sampleRate;
+        t_x[j] = double(j)/fs;//sampleRate;
     }
 }
-
 
 void WavFile::displayDownsample()
 {
@@ -123,8 +123,21 @@ void WavFile::displayDownsample()
     {
         t_pltx.append(t_x[i]);
         //pcm_plty.append(log10(pcm_y[i]));
-        pcm_plty.append(log(pcm_y[i]));
+        //pcm_plty.append(log(pcm_y[i]));
+        pcm_plty.append(pcm_y[i]);
     }
 
+
+}
+
+
+void WavFile::setDummy(QVector<double> &x, QVector<double> &y)
+{
+
+    for (int i=0; i<101; ++i)
+    {
+      x[i] = i/50.0 - 1; // x goes from -1 to 1
+      y[i] = x[i]*x[i]; // let's plot a quadratic function
+    }
 
 }

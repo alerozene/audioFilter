@@ -5,8 +5,19 @@
 #include <QtCore/QVector>
 
 namespace vecutils {
-double min(QVector<double> &);
-double max(QVector<double> &);
+template<typename T>
+T min(QVector<T> & vec)
+{
+    T mn;
+    return mn = *std::min_element(vec.constBegin(), vec.constEnd());
+}
+
+template<typename S>
+S max(QVector<S> & vec)
+{
+    S max;
+    return max = *std::max_element(vec.constBegin(), vec.constEnd());
+}
 }
 
 

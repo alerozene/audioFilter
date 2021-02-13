@@ -26,7 +26,7 @@ class WavFile
     uint16_t blckAlign, bitsPsample;
     uint8_t subCh2ID[4];
     uint32_t subCh2Size;
-    uint16_t* data;
+    int16_t* data;
 
 public:
     WavFile();
