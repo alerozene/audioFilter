@@ -1,7 +1,9 @@
 
+#include "globals.h"
 #include "filter.h"
 #include <QtCore/QVector>
 
+int filter_index;
 
 Filter::Filter()
 {
@@ -15,7 +17,8 @@ Filter::Filter(QVector<double> &rwsg): rawsig(rwsg)
 
 void Filter::apply_filter()
 {
-    switch (filterIndex)
+    int fi = filter_index;
+    switch (fi)
     {
         case 0: Filter::lowPass_1st() ; break;
         case 1: Filter::lowPass_2nd() ; break;
@@ -29,7 +32,7 @@ void Filter::apply_filter()
 
 
     // ////////////////////////////////
-    // i cannot get a fifo structure with the qvector. I need ro re-baptize as a custom vector
+    // i cannot get a fifo structure with the qvector, re-write with custom vector
 
     int i(0);
 

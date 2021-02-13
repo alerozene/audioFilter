@@ -16,13 +16,6 @@ public:
     audioFilter(QWidget *parent = nullptr);
     ~audioFilter();
 
-    int noise = 1;
-    int lwpass1 = 1;
-    int lwpass2 = 0;
-    int hpass1 = 0;
-    int hpass2 = 0;
-    int bndpass = 0;
-    int parameq =0;
 
 private slots:
     void on_loadFile_clicked();

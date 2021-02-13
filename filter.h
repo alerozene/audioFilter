@@ -13,11 +13,12 @@
 
 class Filter
 {
+    // this should be somehow inherited from the main window
     double g = 1.0;
     double q = 1.0/2.0;
     double fc = 1000.0;
-    int filterIndex = 0;
 
+    // fs was defined in globals.h
     double w = tan(M_PI*fc/fs);
 
     QVector<double> rawsig;
@@ -29,6 +30,7 @@ class Filter
     void correlation1(double);
     double correlation2(double);
 
+    // different IIR filters
     void lowPass_1st() ;
     void lowPass_2nd() ;
     void highPass_1st();

@@ -1,3 +1,5 @@
+#include "globals.h"
+#include "gaussnoise.h"
 #include "filter.h"
 #include "plotter.h"
 #include "wavfile.h"
@@ -24,8 +26,14 @@ void Plotter::setupPlot()
 {
 
     WavFile song(pathname);
-    Filter shavesig(song.pcm_y);
 
+    // Can I call a class without a constructor? I just need the method after all...
+    if(noise){
+        GaussNoise distort;
+        distort.add_zmwn(song.pcm_y);
+    }
+
+    Filter shavesig(song.pcm_y);
 
     // create graph and assign data to it:
     ui->customPlot->addGraph();

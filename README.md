@@ -76,6 +76,9 @@ This class sets the data to be filtered and plotted. The objects need to be of t
 
 
 ## Collection of non-soverflow errors
+
+
+
 * `No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop` This error was caused by an automatic update in the path to the qcustomplot file. Fixed by renaming as seen in the image below
 [!norulemaketarget](/images/err_no_rule_to_make_target.jpg)
 
@@ -94,6 +97,8 @@ This is because after re-naming the widget, the little red button on the picture
 - [x] Make template with raw data so that not only int16 is accepted: actually this cannot be done since the selection happens at compile time; [this](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file?rq=1) may be a solution 
 - [ ] Find a way to make all buttons in the group of filter options the same size
 - [ ] In audiofilter.cpp (and .h) change the way teh filter option is selected. Now there is one function per click, there should be an easier way to do this
+- [ ] Maybe abandon globals and pass the classes across each other
+- [ ] re-scaling of the main widget does not work
 
 
 http://freeverb3vst.osdn.jp/tips/iir_filter.shtml
