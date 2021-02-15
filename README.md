@@ -6,7 +6,11 @@ This piece of software allows you to read a .wav file and perform IIR filtering 
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ![sample_1](images/sample1.JPG)
+=======
+![sample](/images/sample1.jpg)
+>>>>>>> parent of ab33a96 (addsampleimage)
 =======
 ![sample](/images/sample1.jpg)
 >>>>>>> parent of ab33a96 (addsampleimage)
