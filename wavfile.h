@@ -32,6 +32,8 @@ public:
     WavFile();
     WavFile(QString);
 
+    double fs;
+
     QVector<double> t_x,pcm_y;
     QVector<double> x,y;
     QVector<double> t_pltx, pcm_plty;

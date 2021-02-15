@@ -7,8 +7,10 @@
 
 class GaussNoise
 {
+    double sigma;
+
 public:
-    GaussNoise();
+    GaussNoise(double);
     void add_zmwn(QVector<double> &);
 };
 

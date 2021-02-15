@@ -3,14 +3,14 @@
 #include "filter.h"
 #include <QtCore/QVector>
 
-int filter_index;
 
-Filter::Filter()
+
+Filter::Filter(): filter_index(0), fs(44100.0)
 {
 
 }
 
-Filter::Filter(QVector<double> &rwsg): rawsig(rwsg)
+Filter::Filter(WavFile *wv, int fi): filter_index(fi), fs(double(wv->fs)), rawsig(wv->pcm_y)
 {
     apply_filter();
 }

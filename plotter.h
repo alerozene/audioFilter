@@ -1,6 +1,7 @@
 #ifndef PLOTTER_H
 #define PLOTTER_H
 
+#include "startingWindow.h"
 #include <QWidget>
 #include "qcustomplot.h"
 
@@ -18,8 +19,7 @@ public:
     explicit Plotter(QWidget *parent = nullptr);
     ~Plotter();
 
-    void setupPlot();
-    void setPathString(QString);
+    void setupPlot(StartingWindow *);
 
 
 

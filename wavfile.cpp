@@ -10,14 +10,13 @@
  *
  **/
 
-#include "globals.h"
 #include "wavfile.h"
 #include "vecutils.h"
 
 #include<math.h>
 
-// from globals.h
-double fs;
+#define DISPOINTS 1000
+
 
 WavFile::WavFile(): x(101),y(101)
 {

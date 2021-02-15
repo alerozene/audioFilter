@@ -5,17 +5,22 @@
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class audioFilter; }
+namespace Ui { class StartingWindow; }
 QT_END_NAMESPACE
 
-class audioFilter : public QWidget
+class StartingWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    audioFilter(QWidget *parent = nullptr);
-    ~audioFilter();
+    StartingWindow(QWidget *parent = nullptr);
+    ~StartingWindow();
 
+    // this are passed to plotter, wavfile and filter
+    int noise;
+    int filter_index;
+    double sigma;
+    QString fileName;
 
 private slots:
     void on_loadFile_clicked();
@@ -37,6 +42,6 @@ private slots:
     void on_pushButton_8_clicked();
 
 private:
-    Ui::audioFilter *ui;
+    Ui::StartingWindow *ui;
 };
 #endif // AUDIOFILTER_H

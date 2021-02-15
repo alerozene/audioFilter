@@ -20,24 +20,26 @@ SOURCES += \
     filter.cpp \
     gaussnoise.cpp \
     main.cpp \
-    audiofilter.cpp \
+    options_filterwindow.cpp \
     plotter.cpp \
     qcustomplot.cpp \
+    startingWindow.cpp \
     wavfile.cpp
 
 HEADERS += \
-    audiofilter.h \
     filter.h \
     gaussnoise.h \
-    globals.h \
+    options_filterwindow.h \
     plotter.h \
     qcustomplot.h \
+    startingWindow.h \
     vecutils.h \
     wavfile.h
 
 FORMS += \
-    audiofilter.ui \
-    plotter.ui
+    options_filterwindow.ui \
+    plotter.ui \
+    startingWindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
