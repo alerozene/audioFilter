@@ -7,6 +7,13 @@ This piece of software allows you to read a .wav file and perform IIR filtering 
 
 ![sample_1](images/sample1.JPG)
 
+- The following filtering techniques are included:
+  - Low pass 1st order
+  - Low pass 2nd order
+  - High pass 1st order
+  - High pass 2nd order
+  - Bandpass
+- To execute the program: clone the repository, launch the executable, load a .wav file (you can use the provided sample), select your filter and interact with the results
 
 To view the program source from qt, go to qtcreator->File->Open File or project... and select `audioFilter.pro` from this (repository) directory.
 
