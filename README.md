@@ -5,7 +5,7 @@
 This piece of software allows you to read a .wav file and perform IIR filtering on it. You may load a noisy signal or choose to add virtual noise to your file. The interface was developed using Qtcreator and qcustomplot for graph display. 
 
 
-![sample_1](audioFilter/images/sample1.JPG)
+![sample_1](images/sample1.JPG)
 
 
 To view the program source from qt, go to qtcreator->File->Open File or project... and select `audioFilter.pro` from this (repository) directory.
