@@ -13,7 +13,6 @@ StartingWindow::StartingWindow(QWidget *parent)
 {
     ui->setupUi(this);
     noise = 0;
-    sigma = 100.0;
     filter_index = 0;
 }
 
@@ -38,7 +37,8 @@ void StartingWindow::on_loadFile_clicked()
     // Prompt plot window: approach 1 heap
     Plotter *graph = new Plotter();
     graph->setupPlot(this);
-    graph->show();
+    //graph->show();
+
 
     // alternatively, modal approach which uses stack and freezes the first window. requires
     // set.modal and an include header at the top of this file
@@ -46,22 +46,27 @@ void StartingWindow::on_loadFile_clicked()
     // graph.setModal()
     // graph.exec;
 
+
+
+
 }
 
 void StartingWindow::on_cleanButton_clicked()
 {
-    noise = 0;
+    noise = false;
     //ui->cleanButton->setStyleSheet("QPushButton{ background-color: yellow }");
 }
 
 void StartingWindow::on_noisyButton_clicked()
 {
-    noise = 1;
+    noise = true;
     //ui->noisyButton->setStyleSheet("QPushButton{ background-color: yellow }");
 }
 
 
 // Find a better way to do this and also change in .h
+// https://doc.qt.io/qt-5/qmessagebox.html this is a better way
+
 void StartingWindow::on_lowpass1_clicked()    {filter_index = 0;}
 void StartingWindow::on_lowpass2_clicked()    {filter_index = 1;}
 void StartingWindow::on_highpass1_clicked()   {filter_index = 2;}

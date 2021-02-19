@@ -2,7 +2,7 @@
 
 ## Program description
 
-This piece of software allows you to read a .wav file and perform IIR filtering on it. You may load a noisy signal or choose to add virtual noise to your file. The interface was developed using Qtcreator and qcustomplot for graph display. 
+Read a .wav file and perform IIR filtering on it. You may load a noisy signal or choose to add virtual noise to your file. The interface was developed using Qtcreator and qcustomplot for graph display. 
 
 
 ![sample_1](images/sample1.JPG)
@@ -52,45 +52,33 @@ The functionality of this script is better reflected in the [standalone version]
 
 ## Structure of the program development
 
-I got started with the Qwidget application partly following the [first Qt tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window creation. The file browsing was assembled following [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). 
-Then I added a plain text widget in the ui and set it to display the path
-Next, create a new ui.h for the plot and access it from the button clicked function
-a
+ 
 
-1. I started by following the [first tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for creating a QWidget in order to create a window, a button and a slot with funcionality 
-
-
-2. plot form
-Add the form by typing...
-qCustom plot tutorial
-https://www.qcustomplot.com/index.php/tutorials/settingup
-
-
-
-2. For obtaining the string to load the audio file, I followed [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). I then added a plain text widget in the ui to display the path
-3. I added a new ui.h which I connected to 
-
-4. Make buttons checkable (properties, bottom right of the design window). Group them inside a widget and click on autoexclusive
-
-### Program development
-For creating the qt widget structure, I followed the [setting up](https://www.qcustomplot.com/index.php/tutorials/settingup) tutorial.
 
 The graph uses the qcustomplot, wich  [this](https://www.qcustomplot.com/index.php/tutorials/basicplotting)
 
-`rawdata.h and .cpp`
-This class sets the data to be filtered and plotted. The objects need to be of type QVector [line 5102 of qcustomplot.h]
+1. I started by following the [first tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window/form generation
+
+2. The file browsing dialog is described in [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). I added a plain text widget in the ui to display the path
+
+3. The graph framework is provided by qcustomplot as explained in the [setting up](https://www.qcustomplot.com/index.php/tutorials/settingup) tutorial.
 
 
+4. To Make buttons checkable (properties, bottom right of the design window). Group them inside a widget and click on autoexclusive
 
+_**Note 18/02/21**_ _Qt is event driven. The event loop is running in the background sending signals between widgets using the loop `a.exec()`_ [qt blog, a.exec()](https://forum.qt.io/topic/77706/when-will-a-widget-show-up-after-calling-show-or-after-entering-its-paint-event/6)
 
+5. As opposed to the modeless addition of the plotter window, for the options dialog I used a [modal approach](https://doc.qt.io/qt-5/qdialog.html) when generating the widget form. This freezes the progress of the function which is an item in which I was stuck for some time (I couldn't pass arguments directly to the class and using different functions seemed a bad idea)
+
+6. [parents](https://doc.qt.io/archives/qt-4.8/objecttrees.html)
 
 ## Collection of non-soverflow errors
 
 |error message|error described|solved|
 |:---:|:---:|:---:|
-| `No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop`|This error was caused by an automatic update in the path to the qcustomplot file. Fixed by renaming as seen in the image below [!norulemaketarget](/images/err_no_rule_to_make_target.jpg) | YES |
+| `No rule to make target '../../qcustomplot.h', needed by 'ui_plotter.h'.  Stop`|This error was caused by an automatic update in the path to the qcustomplot file; caused by using the library on a different project in the same project tree. Fixed by renaming the promoted widget in the ui; as seen in the image below ![norulemaketarget](images/err_no_rule_to_make_target.JPG) | YES |
 | `SIGSEGV segmentation fault (signal received qt dialog)` | I get this at fopen(fname) in wavfile.cpp the reason being that I convert the QString as follows | QString to char conversion should be done properly [see](https://stackoverflow.com/questions/2523765/qstring-to-char-conversion) |
-| Plotter has no member... | After changing the name of the promoted customPlot widget. When re-naming the widget, the little red button on the picture needs to be clicked ![err2](/images/error_2.jpg) | YES |  
+| Plotter has no member... | After changing the name of the promoted customPlot widget. When re-naming the widget, the little red button on the picture needs to be clicked ![err2](images/error_2.JPG) | YES |  
 | `...\moc_audiofilter.cpp:83: error: undefined reference to audioFilter::on_pushButton_2_clicked()` | Forgot to delete function for that slot in the header| YES |
 
 

@@ -4,25 +4,16 @@
 #include "wavfile.h"
 #include <QtCore/QVector>
 #include <math.h>
+#include <QObject>
 
-
-
-
-
-
-
-class Filter
+// for slots and sigs, define as qobject class
+class Filter: public QObject
 {
+    Q_OBJECT
 
     int filter_index;
 
     // this should be somehow inherited from the main window
-    double g = 1.0;
-    double q = 1.0/2.0;
-    double fc = 1000.0;
-    double fs;
-
-    // fs was defined in globals.h
     double w = tan(M_PI*fc/fs);
 
     QVector<double> rawsig;
@@ -30,7 +21,7 @@ class Filter
     double a1, a2;
     double z[4];
 
-    void apply_filter();
+
     void correlation1(double);
     double correlation2(double);
 
@@ -44,10 +35,22 @@ class Filter
 
 
 
+public slots:
+    void rec_fc(double ffc);
+    void rec_q(double ffc);
+    void rec_g(double ffc);
+
+
 public:
     QVector<double> filtered;
     Filter();
-    Filter( WavFile *wv, int);
+    Filter( WavFile *, int);
+    void apply_filter();
+    double fs;
+    double fc = fs*2.0;
+    double g = 1.0;
+    double q = 0.5;
+
 };
 
 #endif // FILTER_H

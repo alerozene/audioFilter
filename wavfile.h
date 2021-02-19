@@ -10,9 +10,9 @@
 
 using namespace std;
 
-
 class WavFile
 {
+
     QString fname;
 
     FILE * pFile;

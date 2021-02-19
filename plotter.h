@@ -1,6 +1,8 @@
 #ifndef PLOTTER_H
 #define PLOTTER_H
 
+#include "filter.h"
+#include "wavfile.h"
 #include "startingWindow.h"
 #include <QWidget>
 #include "qcustomplot.h"
@@ -25,7 +27,9 @@ public:
 
 private:
     Ui::Plotter *ui;
-    QString pathname;
+    StartingWindow *mainWidget;
+
+
 
 };
 

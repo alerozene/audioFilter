@@ -1,22 +1,31 @@
-
-#include "globals.h"
 #include "filter.h"
 #include <QtCore/QVector>
 
 
 
-Filter::Filter(): filter_index(0), fs(44100.0)
+Filter::Filter(): filter_index(0), fs(16.0)
 {
 
 }
 
-Filter::Filter(WavFile *wv, int fi): filter_index(fi), fs(double(wv->fs)), rawsig(wv->pcm_y)
+Filter::Filter(WavFile *wv, int fi): filter_index(fi), rawsig(wv->pcm_y),fs(double(wv->fs)){}
+
+void Filter::rec_fc(double recfc)
 {
-    apply_filter();
+    fc = recfc;
+}
+void Filter::rec_g(double recg)
+{
+    g = recg;
+}
+void Filter::rec_q(double recq)
+{
+    q = recq;
 }
 
 void Filter::apply_filter()
 {
+
     int fi = filter_index;
     switch (fi)
     {
