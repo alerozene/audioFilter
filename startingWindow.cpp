@@ -12,7 +12,7 @@ StartingWindow::StartingWindow(QWidget *parent)
     , ui(new Ui::StartingWindow)
 {
     ui->setupUi(this);
-    noise = 0;
+
     filter_index = 0;
 }
 

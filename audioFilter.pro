@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    detailview.cpp \
     filter.cpp \
     gaussnoise.cpp \
     main.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
     wavfile.cpp
 
 HEADERS += \
+    detailview.h \
     filter.h \
     gaussnoise.h \
     options_filterwindow.h \
@@ -37,6 +39,7 @@ HEADERS += \
     wavfile.h
 
 FORMS += \
+    detailview.ui \
     options_filterwindow.ui \
     plotter.ui \
     startingWindow.ui

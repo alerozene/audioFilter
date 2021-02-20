@@ -1,4 +1,5 @@
 
+#include "detailview.h"
 #include "options_filterwindow.h"
 #include "gaussnoise.h"
 #include "plotter.h"
@@ -70,4 +71,10 @@ void Plotter::setupPlot(StartingWindow *startwin)
     ui->customPlot->graph(1)->setPen(QPen(Qt::red));
     ui->customPlot->graph(1)->setData(song.t_x,shavesig.filtered);
     ui->customPlot->replot();
+
+    /*
+    Detailview *detailed = new Detailview();
+    detailed->passvecs(&song,&shavesig);
+    detailed->show();*/
+
 }

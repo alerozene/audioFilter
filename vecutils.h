@@ -5,6 +5,7 @@
 #include <QtCore/QVector>
 
 namespace vecutils {
+
 template<typename T>
 T min(QVector<T> & vec)
 {

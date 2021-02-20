@@ -22,6 +22,7 @@ public:
     QString fileName;
 
 private slots:
+
     void on_loadFile_clicked();
 
     void on_cleanButton_clicked();
@@ -41,6 +42,8 @@ private slots:
     void on_pushButton_8_clicked();
 
 private:
+
     Ui::StartingWindow *ui;
 };
+
 #endif // AUDIOFILTER_H
