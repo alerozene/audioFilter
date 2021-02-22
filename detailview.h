@@ -22,7 +22,7 @@ public:
 
 private:
     Ui::Detailview *ui;
-    QVector<double> adjustRange(QVector<double>*);
+    QVector<double> adjustRange(QVector<double>&);
 };
 
 #endif // DETAILVIEW_H

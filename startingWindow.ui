@@ -115,39 +115,17 @@
     <rect>
      <x>260</x>
      <y>310</y>
-     <width>231</width>
-     <height>121</height>
+     <width>215</width>
+     <height>87</height>
     </rect>
    </property>
-   <layout class="QFormLayout" name="filterTypeWidget">
+   <layout class="QGridLayout" name="gridLayout">
     <property name="sizeConstraint">
      <enum>QLayout::SetDefaultConstraint</enum>
     </property>
-    <property name="fieldGrowthPolicy">
-     <enum>QFormLayout::FieldsStayAtSizeHint</enum>
-    </property>
-    <property name="rowWrapPolicy">
-     <enum>QFormLayout::DontWrapRows</enum>
-    </property>
-    <property name="horizontalSpacing">
+    <property name="spacing">
      <number>8</number>
     </property>
-    <property name="verticalSpacing">
-     <number>8</number>
-    </property>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="lowpass2">
-      <property name="text">
-       <string>Low Pass 2nd order</string>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="autoExclusive">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0">
      <widget class="QPushButton" name="highpass1">
       <property name="text">
@@ -187,6 +165,19 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="lowpass1">
+      <property name="text">
+       <string>Low Pass 1st order</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="autoExclusive">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="pushButton_8">
       <property name="text">
@@ -200,10 +191,10 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="lowpass1">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="lowpass2">
       <property name="text">
-       <string>Low Pass 1st order</string>
+       <string>Low Pass 2nd order</string>
       </property>
       <property name="checkable">
        <bool>true</bool>

@@ -57,14 +57,16 @@ void Plotter::setupPlot(StartingWindow *startwin)
         distort.add_zmwn(song.pcm_y);
     }
 
-/*
+
+
+
     QObject::connect(&options,&Options_filterWindow::fc_chngd,&shavesig,
                      &Filter::rec_fc);
     QObject::connect(&options,&Options_filterWindow::q_chngd,&shavesig,
                      &Filter::rec_q);
     QObject::connect(&options,&Options_filterWindow::g_chngd,&shavesig,
                      &Filter::rec_g);
-*/
+
 
     shavesig.apply_filter();
     ui->customPlot->addGraph();
@@ -72,9 +74,9 @@ void Plotter::setupPlot(StartingWindow *startwin)
     ui->customPlot->graph(1)->setData(song.t_x,shavesig.filtered);
     ui->customPlot->replot();
 
-    /*
+
     Detailview *detailed = new Detailview();
     detailed->passvecs(&song,&shavesig);
-    detailed->show();*/
+    detailed->show();
 
 }
