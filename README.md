@@ -15,7 +15,7 @@ Read a .wav file and perform IIR filtering on it. You may load a noisy signal or
   - Bandpass
 - To execute the program: clone the repository, launch the executable, load a .wav file (you can use the provided sample), select your filter and interact with the results
 
-To view the program source from qt, go to qtcreator->File->Open File or project... and select `audioFilter.pro` from this (repository) directory.
+To view the program source from qt, go to qtcreator->File->Open File or project... and select the Qt project file `audioFilter.pro` from this (repository) directory.
 
 
 
@@ -63,6 +63,7 @@ The graph uses the qcustomplot, wich  [this](https://www.qcustomplot.com/index.p
 
 3. The graph framework is provided by qcustomplot as explained in the [setting up](https://www.qcustomplot.com/index.php/tutorials/settingup) tutorial.
 
+3. To make widgets "scale" with resizing, the parent widget needs to be laid out
 
 4. To Make buttons checkable (properties, bottom right of the design window). Group them inside a widget and click on autoexclusive
 
@@ -96,6 +97,7 @@ _**Note 18/02/21**_ _Qt is event driven. The event loop is running in the backgr
 ### Current bugs
 ---
 - [ ] The "noisy" option does not work
+- [ ] Horizontal axis is double the size of pcm axis
 - [ ] 
 
 

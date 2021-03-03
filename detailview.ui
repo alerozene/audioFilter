@@ -13,30 +13,20 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>611</width>
-     <height>441</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QCustomPlot" name="rawfilt" native="true"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QCustomPlot" name="filt" native="true"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QCustomPlot" name="fplot" native="true"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QCustomPlot" name="raw" native="true"/>
-    </item>
-   </layout>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QCustomPlot" name="rawfilt" native="true"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QCustomPlot" name="fplot" native="true"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCustomPlot" name="raw" native="true"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCustomPlot" name="filt" native="true"/>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>

@@ -46,11 +46,11 @@ void Plotter::setupPlot(StartingWindow *startwin)
 
     Filter shavesig( &song  , mainWidget->filter_index);
 
-    //----------------------------------------------------------------------------------
+
     Options_filterWindow options;
     options.setvals(song.fs);
     options.exec();
-    //------------------------------------------------------------------------------------
+
 
     if(mainWidget->noise){
         GaussNoise distort(options.sigma);
