@@ -20,7 +20,7 @@ Options_filterWindow::~Options_filterWindow()
     delete ui;
 }
 
-void Options_filterWindow::setvals(double smth)
+void Options_filterWindow::setvals(double smth, bool file_noise)
 {
     fs = smth;
     sigma = 5000.0;
@@ -33,7 +33,12 @@ void Options_filterWindow::setvals(double smth)
     ui->edit_g->setText(QString::number(g));
     ui->edit_q->setText(QString::number(q));
     ui->edit_fc->setText(QString::number(fc));
-    ui->edit_sigma->setText(QString::number(sigma));
+
+    if(file_noise){
+        ui->edit_sigma->setDisabled(true);
+    }
+    else{ui->edit_sigma->setText(QString::number(sigma));}
+
 }
 
 

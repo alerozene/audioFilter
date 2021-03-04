@@ -19,7 +19,13 @@ void GaussNoise::add_zmwn(QVector<double> & rawsig)
     std::default_random_engine generator (seed);
     std::normal_distribution<double> distribution (0.0,sigma);
 
-    for (int i=0; i<rawsig.size(); ++i)
-      rawsig+= distribution(generator);
+    for (int i=0; i<rawsig.size(); ++i){
+
+
+        rawsig[i]+= distribution(generator);
+
+    }
+
+
 
 }

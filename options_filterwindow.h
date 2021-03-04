@@ -18,7 +18,7 @@ public:
     explicit Options_filterWindow(QWidget *parent = nullptr);
     ~Options_filterWindow();
 
-    void setvals(double);
+    void setvals(double, bool);
 
 
     double fs;

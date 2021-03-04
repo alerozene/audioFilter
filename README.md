@@ -24,7 +24,7 @@ To view the program source from qt, go to qtcreator->File->Open File or project.
 Overview of the files (other than `main.cpp`):
 
 ### `audiofilter.cpp/h`
-Instantiates a form which opens a navigator window and allows to select a file with .wav extension. It then writes the string to the form. Afterwards, the program instantiates a `plotter.cpp` object and it passes the path-string to it. The plotter form is called using the heap approach, that is: reserving heap memory by calling like this:  `new Plotter();...`. Alternatively, one could use the modal approach which freezes the first window as described in [this video tutorial](https://www.youtube.com/watch?v=VigUMAfE2q4&ab_channel=ProgrammingKnowledge)
+Instantiates a form which opens a navigator window and allows to select a file with .wav extension. It then writes the string to the form. Afterwards, the program instantiates a `plotter.cpp` object and it passes the path-string to it. The plotter form is called using the heap approach, that is: reserving heap memory by calling like this:  `new Plotter();...`. Alternatively, one could use the modal approach which freezes the first window.
 
 ### `plotter.cpp/h`
 Displays a form containing a qcustom plot widget (see qcustomplot), followed by a call to `wavfile.cpp`. This creates a wavfile object which reads the audio from the string passed to this class. Then, the graph for the plot gets displayed.  
@@ -52,18 +52,21 @@ The functionality of this script is better reflected in the [standalone version]
 
 ## Structure of the program development
 
- 
-
-
-The graph uses the qcustomplot, wich  [this](https://www.qcustomplot.com/index.php/tutorials/basicplotting)
-
-1. I started by following the [first tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window/form generation
+1. I started by following the [first tutorial](https://doc.qt.io/qtcreator/creator-writing-program.html) for window/form generation. Helping get a feel of how to develop with qt
 
 2. The file browsing dialog is described in [this post](https://stackoverflow.com/questions/5602798/how-to-launch-a-file-browser-in-a-qt-application). I added a plain text widget in the ui to display the path
 
-3. The graph framework is provided by qcustomplot as explained in the [setting up](https://www.qcustomplot.com/index.php/tutorials/settingup) tutorial.
+3. The process of generating and displaying a new form was enabled by [this video tutorial](https://www.youtube.com/watch?v=VigUMAfE2q4&ab_channel=ProgrammingKnowledge). I chose the dynamic appraoch so as to not freeze the first window. An alternative is the modal approach for which this 
+``` c++
+Plotter graph;
+graph.setModal()
+graph.exec;
+ ```
 
-3. To make widgets "scale" with resizing, the parent widget needs to be laid out
+3. The graph framework is provided by qcustomplot. To get started, follow [setting up](https://www.qcustomplot.com/index.php/tutorials/settingup) tutorial. The [basic plotting tutorial](https://www.qcustomplot.com/index.php/tutorials/basicplotting) shows how to actually generate and display data
+
+
+3. To make widgets "scale" with resizing, the parent widget needs to be laid out. This is achieved by selecting the parent object from the object pane (in design mode, on the right side of the screen). The parent object will be the highest on the list, and by right clicking on it and selecting layout, you can choose how the rest of the classes and widgets are laid out
 
 4. To Make buttons checkable (properties, bottom right of the design window). Group them inside a widget and click on autoexclusive
 
@@ -86,17 +89,17 @@ _**Note 18/02/21**_ _Qt is event driven. The event loop is running in the backgr
 ## To do:
 - [x] Make template with raw data so that not only int16 is accepted: actually this cannot be done since the selection happens at compile time; [this](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file?rq=1) may be a solution 
 - [ ] Create a live audio version of this software where microphone data can also be read and filtered
-- [ ] Find a way to make all buttons in the group of filter options the same size
-- [ ] In audiofilter.cpp (and .h) change the way teh filter option is selected. Now there is one function per click, there should be an easier way to do this
-- [ ] Maybe abandon globals and pass the classes across each other
-- [ ] re-scaling of the main widget does not work
-- [ ] Put the contents of onfileclicked into onokayclicked and prevent the program from progressing if the path to the wavfile is null pointer
+- [x] Find a way to make all buttons in the group of filter options the same size
+- [x] In audiofilter.cpp (and .h) change the way the filter option is selected. Now there is one function per click, there should be an easier way to do this
+- [x] Maybe abandon globals and pass the classes across each other
+- [x] re-scaling of the main widget does not work
+- [x] Put the contents of onfileclicked into onokayclicked and prevent the program from progressing if the path to the wavfile is null pointer
 - [ ] ? support for mp3
 
 
 ### Current bugs
 ---
-- [ ] The "noisy" option does not work
+- [x] The "noisy" option does not work
 - [ ] Horizontal axis is double the size of pcm axis
 - [ ] 
 

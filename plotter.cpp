@@ -29,6 +29,19 @@ void Plotter::setupPlot(StartingWindow *startwin)
 
     WavFile song(mainWidget->fileName);
 
+
+
+
+    Options_filterWindow options;
+    options.setvals(song.fs,mainWidget->fileNoise);
+    options.exec();
+
+
+    if(mainWidget->fileNoise==false){
+        GaussNoise distort(options.sigma);
+        distort.add_zmwn(song.pcm_y);
+    }
+
     ui->customPlot->addGraph();
     ui->customPlot->graph(0)->setData(song.t_x,song.pcm_y);
     // give the axes some labels:
@@ -45,17 +58,6 @@ void Plotter::setupPlot(StartingWindow *startwin)
 
 
     Filter shavesig( &song  , mainWidget->filter_index);
-
-
-    Options_filterWindow options;
-    options.setvals(song.fs);
-    options.exec();
-
-
-    if(mainWidget->noise){
-        GaussNoise distort(options.sigma);
-        distort.add_zmwn(song.pcm_y);
-    }
 
 
 

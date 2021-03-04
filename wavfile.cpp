@@ -83,9 +83,9 @@ void WavFile::setAudio()
 {
     if(numChannel==2)
     {
-        pcm_y.reserve((lSize-44)/2);
+        pcm_y.reserve( ( lSize-44)/2 );
         pcm_y.append(5);
-        for(int ii=0;ii<lSize-44;ii=ii+2)
+        for(int ii=0;ii<(lSize-44)/2;ii=ii+2)
         {
             //qcustomplot requires type double
             pcm_y.append(static_cast<double>(data[ii]));

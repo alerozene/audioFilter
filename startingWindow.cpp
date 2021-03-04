@@ -12,7 +12,7 @@ StartingWindow::StartingWindow(QWidget *parent)
     , ui(new Ui::StartingWindow)
 {
     ui->setupUi(this);
-    noise = false;
+    fileNoise = false;
     filter_index = 0;
 }
 
@@ -28,38 +28,26 @@ void StartingWindow::on_loadFile_clicked()
     StartingWindow::fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                     "C:/",
                                                     tr("Audio (*.wav)"));
-    // Write the text back to the widget
-    ui->plainTextEdit->setPlainText(StartingWindow::fileName);
 
-
-
-
-    // Prompt plot window: approach 1 heap
-    Plotter *graph = new Plotter();
-    graph->setupPlot(this);
-    //graph->show();
-
-
-    // alternatively, modal approach which uses stack and freezes the first window. requires
-    // set.modal and an include header at the top of this file
-    // Plotter graph;
-    // graph.setModal()
-    // graph.exec;
-
-
-
-
+    if(fileName!=nullptr){
+        // Write the text back to the widget
+        ui->plainTextEdit->setPlainText(StartingWindow::fileName);
+        // Prompt plot window: approach 1 heap
+        Plotter *graph = new Plotter();
+        graph->setupPlot(this);
+        //graph->show();
+    }
 }
 
 void StartingWindow::on_cleanButton_clicked()
 {
-    noise = false;
+    fileNoise = false;
     //ui->cleanButton->setStyleSheet("QPushButton{ background-color: yellow }");
 }
 
 void StartingWindow::on_noisyButton_clicked()
 {
-    noise = true;
+    fileNoise = true;
     //ui->noisyButton->setStyleSheet("QPushButton{ background-color: yellow }");
 }
 

@@ -17,7 +17,7 @@ public:
     ~StartingWindow();
 
     // this are passed to plotter, wavfile and filter
-    bool noise;
+    bool fileNoise;
     int filter_index;
     QString fileName;
 
